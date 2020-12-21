@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding train: Data:/APIs 1 </title>
+</head>
+<body>
+    <img source = "" id="rainbow" />
+
+    <script>
+        console.log('about to fetch a rainbow!');
+
+        catchRainbow().catch(error => {
+            console.log('error!');
+            console.error(error);
+        });
+
+        async function catchRainbow(){
+            const response = await fetch('rainbow.jpg');
+            const Blob = await response.blob();
+            document.getElementById('rainbow').src = URL.createObjectURL(Blob);
+        }
+
+        /* MÉTODO INICIAL com THEN
+        fetch('rainbow.jpg').then(response => {
+            console.log(response);
+            return response.blob();
+        }).then(Blob => {
+            console.log(Blob);
+            document.getElementById('rainbow').src = URL.createObjectURL(Blob)
+        })
+        .catch(error => {
+            console.log('erro"');
+            console.error(error);
+        });*/
+    </script>
+    
+</body>
+</html>
